@@ -1,0 +1,27 @@
+1.为了降低Java开发的复杂性，Spring采取了以下4种关键策略：
+（1）基于POJO的轻量级和最小侵入式编程；
+（2）通过依赖注入和面向接口实现松耦合；
+（3）基于切面和惯例进行声明式编程；
+（4）通过切面和模板减少样板式代码。
+
+
+2.依赖注入的方式：
+（1）构造器注入；
+
+3.Spring配置简单属性值（使用value属性）和引用其他Bean的属性（使用ref属性）
+构造函数中的参数：
+<constructor-arg value>
+<constructor-arg ref>
+利用类中的set（如setSong）方法给属性赋值：
+<property name="" value="">
+<property name="" ref="">
+
+
+4.最小化Spring XML配置
+（1）自动装配Bean属性
+byName,byType,constructor,autodetect
+当使用constructor自动装配策略时，必须让Spring自动装配构造器的所有入参，不能混合使用constructor自动装配策略和<constructor-arg>元素
+
+
+5.继承与委托是最常见的实现通用功能的面向对象技术。
+通知，切点，连接点，切面，引入，织入
