@@ -1,0 +1,145 @@
+1.
+抽象类：
+（1）一个抽象类可以没有抽象方法，但一个类有抽象方法一定是抽象类；
+（2）除非子类是抽象类，否则必须实现父类的抽象方法；
+接口：
+（1）抽象类的所有方法都是抽象方法的时候称之为接口；
+（2）接口可以实现多重继承，类不可以；
+（3）接口中只有公共静态常量声明和抽象方法声明；
+（4）接口中的所有方法都是public修饰的；
+（5）接口中的所有方法都必须被实现，与抽象类一样，虽然实现，但方法体可以为空；
+（6）抽象类不能实例化，接口作为特殊的抽象类也不能。但Java中允许一个接口实现类的对象赋值给这个接口变量，这种情况叫做接口回调；
+（7）抽象类可以有构造方法，接口中不能有构造方法；
+（8）抽象方法要被实现，所以不能是静态的，也不能是私有的；
+
+
+2.
+外部类只能用public或default修饰符进行修饰，而嵌套类和内部类则可以指定四种访问修饰符中的任意一种。
+内部类（非静态嵌套类）：
+（1）内部类除了常量外不能声明静态成员，否则会发生编译错误；
+（2）其他类访问方法
+Outer e = new Outer();
+Outer.Inner a = e.new Inner();
+
+嵌套类（静态嵌套类）：
+（1）静态嵌套类由static修饰符修饰，也叫做顶级嵌套类，作为外部类的一个静态成员存在，允许声明静态成员；
+（2）其他类访问方法
+OuterClass.Nested w = new OuterClass.Nested();
+（3）根据嵌套类的特点，可以在类中定义一个嵌套类用做代码的测试；
+（4）嵌套类是静态的，与静态方法一样，嵌套类中的方法（无论是静态还是非静态）只能直接访问外部类的静态成员。要访问外部类非静态成员，只能创建外部类的对象，通过外部类的对象访问非静态成员；
+（5）在外部类中，可以直接通过嵌套类名访问嵌套类的静态成员，通过嵌套类的对象来引用嵌套类的非静态成员。
+
+
+3.静态方法能直接访问类的静态成员，访问非静态成员，需要创建类的对象，通过类的对象来访问非静态成员。比如main()函数是静态方法，需要先创建对象，在通过对象访问类的其他成员。
+
+
+4.Java中Set是个接口，对象没有存放顺序；
+C++中set是有顺序的，因此只能存放可以比较大小的数据；
+
+
+5.
+（1）ArrayList类使用连续的内存单元存储数据元素，在遍历元素方面具有很好的效率，但添加或删除数据元素时效率较低。适合存储被查询出的结果集，且不对结果做修改，只是在末尾进行追加操作。
+（2）LinkedList类使用指针关联的双向链表存储数据，元素插入和删除的效率都很好，但遍历速度较慢。适合存储数据元素变动较大的线性集合，可以更快速地对指定位置的元素进行增加/删除/修改和查询。
+（3）Vector类是一个Object类型的可变长的数组，其数据元素类型可以是任意的类型，Vector在分配内存空间的时候是根据每个元素的大小动态分配的，所以元素移动会导致内存区域的重新划分。如果集合对象是一个需要元素移位的结构，要谨慎使用Vector。
+
+
+6.Map用于存储键值对，根据键得到值，因此不允许键重复，值可以重复。
+（1）HashMap是一个最常用的Map，它根据键的hashCode值存储数据，根据键可以直接获取它的值，具有很快的访问速度。HashMap最多只允许一条记录的键为null，不允许多条记录的值为null。HashMap不支持线程的同步，即任一时刻可以有多个线程同时写HashMap，可能会导致数据的不一致。如果需要同步，可以用Collections.synchronizedMap(HashMap map)方法使HashMap具有同步的能力。
+（2）Hashtable与HashMap类似，不同的是：它不允许记录的键或者值为空；它支持线程的同步，即任一时刻只有一个线程能写Hashtable，然而，这也导致了Hashtable在写入时会比较慢。
+（3）LinkedHashMap保存了记录的插入顺序，在用Iteraor遍历LinkedHashMap时，先得到的记录肯定是先插入的。在遍历的时候会比HashMap慢。有HashMap的全部特性。
+（4）TreeMap能够把它保存的记录根据键排序，默认是按升序排序，也可以指定排序的比较器。当用Iteraor遍历TreeMap时，得到的记录是排过序的。TreeMap的键和值都不能为空。
+
+
+7.捕获异常类的catch子句要放在捕获异常自类的catch子句前面，否则程序永远无法到达子类的catch子句。
+
+
+8.
+try{}catch{}finally{}
+throw语句用于程序主动抛出异常，而throws语句用于在方法头中声明程序存在异常。throw和throws经常一起使用。
+
+
+9.如果没有文件，FileOutputStream类会创建文件，而File类只是指向文件，不会创建文件。
+
+
+10.一个文件流外可以包裹一个数据流。
+
+
+11.对象流ObjectInputStream类和ObjectOutputStream类通常与文件流FileInputStream和FileOutputStream配套使用。
+对象流只能处理可序列化的对象，一个类只有实现java.io.Serializable接口，该类的对象才能被序列化。
+
+
+12.InputStream和OutputStream是按照字节处理数据，Java采用Unicode，每个字符Java虚拟机为其分配两个字节的内存，因此使用字节流读取字符数据不当容易出现乱码现象。这时最好采用字符流Reader和Writer。
+
+上述四者都是抽象类，不能创建对象。
+
+抽象类有构造方法，但不能直接调用，因为抽象类不能实例化。
+
+
+13.InputStreamReader/OutputStreamWriter
+IO设备-->System.in-->InputStreamReader-->BufferedReader-->程序
+IO设备<--System.out<--OutputStreamWriter<--BufferedWriter<--程序
+
+每次调用read()/write()方法都会导致从标准输入/输出流读/写一个或多个字节，所以要启用从字节和字符之间的有效转换，可以提前将要转换的数据积累到缓冲区。例如，可以将字节字符流外包裹一层缓冲流。
+BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
+BufferedWriter bw=new BufferedWriter(new OutputStreamWriter(System.out));
+
+
+14.RandomAccessFile类可以在文件的任何位置完成读/写两种操作，该类位于java.io包中，它既不是InputStream的子类，也不是OutputStream的子类，但该类具有DataInputStream和DataOutputStream的全部功能。它除了实现DataInput和DataOutput接口（DataInputStream和DataOutputStream也实现了这两个接口）之外，它和这两个继承层次结构没有任何关联。
+
+
+15.trim()一般是去两边空格的方法。
+
+
+16.final不能修饰抽象类和接口。
+
+
+17.String,StringBuffer,StringBuilder http://www.cnblogs.com/dolphin0520/p/3778589.html
+
+
+18. 各数据类型按容量大小（表数范围大小）由小到大排列为：
+
+     Byte, short, char  ——int ——long——float——double
+
+  转换时遵循的原则：
+
+     1）容量小的类型自动转换为容量大的类型；
+
+     2）容量大的类型转换为容量小的类型时，要加强制转换符；
+
+    3）byte，short，char之间不会互相转换，并且三者在计算时首先转换为int类型；
+
+    4）实数常量默认为double类型， 整数常量默认为int类型；
+
+
+19.要记住的几点：
+（1）对象可能不被垃圾回收；
+（2）垃圾回收并不等于“析构”；
+（3）垃圾回收只与内存有关。
+
+
+20.缓冲输入文件：
+BufferedReader in = new BufferedReader(new FileReader(filename));
+String s;
+StringBuilder sb = new StringBuilder();
+while((s = in.readline()) != null)
+{
+    sb.append(s+'\n');
+}
+in.close();
+return sb.toString();
+
+
+21.从内存输入:
+StringReader in = new StringReader(BufferedInputFile.read("MemoryInput.java"));
+int c;
+while((c = in.read()) !- -1)
+{
+    System.out.print((char)c);
+}
+read()是以int形式返回下一字节，因此必须类型转换为char才能正确打印。
+
+
+22.格式化的内存输入：
+DataInputStream in = new DataInputStream(new ByteArrayInputStream(BufferedInputFile.read("FormattedMemoryInput.java").getBytes()));
+while(true)
+    System.out.print((char)in.readByte());
