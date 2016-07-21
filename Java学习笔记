@@ -143,3 +143,20 @@ read()是以int形式返回下一字节，因此必须类型转换为char才能�
 DataInputStream in = new DataInputStream(new ByteArrayInputStream(BufferedInputFile.read("FormattedMemoryInput.java").getBytes()));
 while(true)
     System.out.print((char)in.readByte());
+
+
+23.同步，异步，阻塞，非阻塞
+non-blocking：在执行recvfrom这个system call的时候，如果kernel的数据没有准备好，不会block进程，但当kernel中数据准备好的时候，recvfrom会将数据从kernel拷贝到用户内存中，在这段时间内，进程是被block的。
+asynchronous：与non-blocking不一样，当进程发起IO操作后，就直接返回再也不理睬，知道kernel发送一个信号，告诉进程说IO完成，在这整个过程中，进程完全没有被block。
+
+（1）同步与异步
+同步和异步关注的是消息通信机制。主要针对C端。
+所谓同步，就是在c端发出一个功能调用时，在没有得到结果之前，该调用就不返回。
+异步的概念和同步相对。当c端一个异步过程调用发出后，调用者不能立刻得到结果。实际处理这个调用的部件在完成后，通过状态、通知和回调来通知调用者。
+（2）阻塞与非阻塞
+阻塞与非阻塞关注的是程序在等待调用结果（消息，返回值）时的状态。主要针对S端。
+阻塞调用是指调用结果返回之前，当前线程会被挂起（线程进入非可执行状态，在这个状态下，cpu不会给线程分配时间片，即线程暂停运行）。函数只有在得到结果之后才会返回。
+
+同步与阻塞不等同，对同步调用来说，很多时候当前线程还是激活的，只是从逻辑上当前函数没有返回而已
+
+参考：http://blog.csdn.net/hguisu/article/details/7453390
