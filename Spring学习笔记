@@ -32,3 +32,10 @@ byName,byType,constructor,autodetect
 （1）编译期
 （2）类加载期
 （3）运行期
+
+
+6.ACID
+（1）原子性Atomic
+（2）一致性Consistent
+（3）隔离性Isolated
+（4）持久性Durable
