@@ -1,0 +1,15 @@
+1.特定格式输入用scanf；
+
+
+2.输出精度控制两种方式
+(1)#include <iomanip>
+cout<<fixed<<setprecision(n)<<a;//小数点后n位
+cout<<setprecision(n)<<a;//一共n位
+(2)#include <stdio.h>
+printf(“%.2f”,a);//小数点后2位
+
+
+3.#include <bits/stdc++.h>包括大部分常用头文件
+
+
+4.变量初始化的顺序是其声明的顺序，跟初始化列表的顺序无关。

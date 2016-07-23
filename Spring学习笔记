@@ -39,3 +39,13 @@ byName,byType,constructor,autodetect
 （2）一致性Consistent
 （3）隔离性Isolated
 （4）持久性Durable
+
+
+7.声明式事务属性
+（1）传播行为
+（2）隔离级别
+（3）回滚级别
+（4）事务超时
+（5）是否只读
+
+脏读，不可重复读，幻读
